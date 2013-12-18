@@ -20,8 +20,7 @@ public class GREWordListFormat {
 		System.out.println("hello world---begin");
 		 try {
 			 
-				File fXmlFile = new File("/Users/yangeric/Documents/study/toefl+GRE/GRE-Wrod-7000.xml");
-				//Get the DOM Builder Factory
+			 //Get the DOM Builder Factory
 			    DocumentBuilderFactory factory = 
 			        DocumentBuilderFactory.newInstance();
 
@@ -33,7 +32,7 @@ public class GREWordListFormat {
 			    Document document = 
 			      builder.parse(ClassLoader.getSystemResourceAsStream("com/kafeidev/main/GRE-Wrod-7000.xml"));
 
-			    List<Word> empList = new ArrayList<Word>();
+			    List<Word> wordList = new ArrayList<Word>();
 
 			    //Iterating through the nodes and extracting the data.
 			    NodeList nodeList = document.getDocumentElement().getChildNodes();
@@ -43,7 +42,7 @@ public class GREWordListFormat {
 			      //We have encountered an <employee> tag.
 			      Node node = nodeList.item(i);//item
 			      if (node instanceof Element) {
-			    	  Word emp = new Word();
+			    	  Word word = new Word();
 //			        emp.wordCN = node.getAttributes().getNamedItem("id").getNodeValue();
 
 			        NodeList childNodes = node.getChildNodes();
@@ -57,16 +56,20 @@ public class GREWordListFormat {
 			            String name=cNode.getNodeName();
 //			            System.out.println("name:"+name);
 			            if (name.equals("word")) {
-			            		System.out.println("---word:"+cNode.getTextContent());
+			            		word.wordEN=cNode.getTextContent();
+//			            		System.out.println("---word:"+cNode.getTextContent());
 			            } else if(name.equals("phonetic")){
 //			            		System.out.println("---phonetic:"+cNode.getTextContent());
+			            		word.wordSound=cNode.getTextContent();
 			            } else if(name.equals("trans")){
-			            		System.out.println("---trans:"+cNode.getTextContent());
+//			            		System.out.println("---trans:"+cNode.getTextContent());
+			            		word.wordCN= cNode.getTextContent();
 						}
 			           
 			          }
 			        }
-			        empList.add(emp);
+			        System.out.println("word:\n"+word);
+			        wordList.add(word);
 			      }
 
 			    }
@@ -84,6 +87,6 @@ public class GREWordListFormat {
 
 		  @Override
 		  public String toString() {
-			  return wordEN+ " "+ wordSound+ " " + wordCN;
+			  return wordEN+ " ["+ wordSound+ "] \n" + wordCN;
 		  }
 		}
