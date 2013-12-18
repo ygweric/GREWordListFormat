@@ -10,7 +10,7 @@
 	<classpathentry kind="lib" path="lib/log4j-1.2.13.jar"/>
 	<classpathentry kind="lib" path="lib/stax-api-1.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/xmlbeans-2.3.0.jar"/>
-	<classpathentry kind="lib" path="lib/poi-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="lib/poi-3.9-20121203.jar" sourcepath="/Users/yangeric/important/poi-3.9 2.zip"/>
 	<classpathentry kind="lib" path="lib/poi-excelant-3.9-20121203.jar"/>
 	<classpathentry kind="lib" path="lib/poi-ooxml-3.9-20121203.jar"/>
 	<classpathentry kind="lib" path="lib/poi-ooxml-schemas-3.9-20121203.jar"/>
